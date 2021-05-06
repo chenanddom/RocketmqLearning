@@ -1,0 +1,9 @@
+server:
+  port: 9999
+spring:
+  profiles:
+    active: dev
+  application:
+    name: rocketmq-discover
+  main:
+    allow-bean-definition-overriding: true

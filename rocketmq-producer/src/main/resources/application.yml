@@ -1,0 +1,23 @@
+server:
+  port: 8899
+rocketmq:
+  name-server: 127.0.0.1:9876
+  producer:
+    group: rocket-group
+eureka:
+  client:
+    service-url:
+      defaultZone: ${defaultZone:http://localhost:9999/eureka/}
+      enabled: true
+    eureka-server-connect-timeout-seconds: 30
+    registry-fetch-interval-seconds: 5
+  instance:
+    status-page-url: http://${spring.cloud.client.ip-address}:${server.port}/swagger-ui.html
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 7
+    instance-id: ${eureka.instance.ip-address}:${server.port}:${spring.application.name}
+    ip-address: ${ip-address:127.0.0.1}
+spring:
+  application:
+    name: rocketmq-producer
